@@ -47,8 +47,10 @@ run_analysis <- function()
     # find average of each variable for each activity and subject
     columnsToAverage <- seq(3,dim(data)[2])
     tidyData <- aggregate(data[,columnsToAverage], by=list(data$Subject,data$Activity), FUN=mean)
+    # update columns names, and ensure measurements are identified as average (Avg)
     names(tidyData)[1] <- "Subject"
     names(tidyData)[2] <- "Activity"
+    names(tidyData)[columnsToAverage] <- paste(names(data)[columnsToAverage],"Avg",sep="")
     
     # order data by subject first, and then by activity
     tidyData <- tidyData[order(tidyData$Subject,tidyData$Activity),]
@@ -58,7 +60,7 @@ run_analysis <- function()
     tidyFilename <- "tidy UCI HAR Dataset.txt"
     write.table(tidyData, tidyFilename)
     # this tidy data can be read back into R with:
-    tidyData <- read.table(tidyFilename)
+    tidyData <- read.table(tidyFilename, check.names=FALSE)
     
     # return this tidy data
     tidyData
