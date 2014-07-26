@@ -1,8 +1,8 @@
 # Tidy UCI HAR Dataset Codebook
 
 Subject
-    Identifies which of thirty subject the data in this row was measured from.
-        1-30
+...Identifies which of thirty subject the data in this row was measured from.
+... ...1-30
 
 Activity
     Identifies the activity that this subject was engaged in while collecting the data in this row.
